@@ -57,6 +57,9 @@ if (tenantId === '') {
 
 let redirect = aras.getInnovatorUrl() + 'Client/scripts/blank.html'; 
 
+// Convert the tenantId into a full login url if it is not already formatted like that
+tenantId = tenantId.padStart(70, "https://login.microsoftonline.com/");
+
 // build MSAL configuration and object
 var msalConfig = {
     auth: {
@@ -413,8 +416,15 @@ function buildSiteEndpoint(config) {
     let host = urlParts[0];
     let name = urlParts[2];
 
+    /* the site endpoint will be based on the format of the sharepoint site */
+
+    // the base endpoint will look like https://graph.microsoft.com/v1.0/sites/{site host}
+    let siteEndpoint = 'https://graph.microsoft.com/v1.0/sites/' + host;
+
     // the site endpoint will look like https://graph.microsoft.com/v1.0/sites/{site host}:/sites/{site name}
-    let siteEndpoint = 'https://graph.microsoft.com/v1.0/sites/' + host + ':/sites/' + name;
+    siteEndpoint += (!!name) ? (':/sites/' + name) : '';
+
+    // TODO: Might want to handle subsites as well.
 
     let graphConfig = {
         siteEndpoint: siteEndpoint

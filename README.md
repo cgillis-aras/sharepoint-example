@@ -15,7 +15,6 @@ The following use cases are planned for future releases:
 3. Updating SharePoint items with Aras item metadata
 4. Additional authentication examples - application/service user authentication with the MS Graph API, server-side authentication
 
-
 ## History
 
 Release | Notes
@@ -41,6 +40,15 @@ Project | Aras
 3. aras.labs.SharePointConfiguration package
 4. Code Tree overlay
 5. Administrator access to an Office 365 tenant
+
+#### Setting Up a Office 365 Tenant (Optional)
+
+To both test this project and to enable further development for it, we recommend setting up a separate development tenant for Office 365. You can do this by joining the [Office 365 Developer Program](https://docs.microsoft.com/en-us/office/developer-program/office-365-developer-program). Once you join the program, you can set up a [Microsft 365 developer subscription](https://docs.microsoft.com/en-us/office/developer-program/office-365-developer-program-get-started) which will also allow you to create a domain for development. 
+
+Additionally, we'll also want to set up a Sharepoint site to test on. Tenants come with a default Sharepoint site which will be based on the domain you choose. The default site for a domain named *araslabstest* would be `https://araslabstest.sharepoint.com`. If you don't want to use the default site, you can also add a site specifically for testing by going to the admin portal which is accessible at a url like `https://araslabstest-admin.sharepoint.com`. In the sidebar of this site, you can view the `Active Sites` and add a new site. 
+
+![Sharepoint Admin Site](Screenshots/sharepoint-admin-site.png)
+
 
 ### Install Steps
 
